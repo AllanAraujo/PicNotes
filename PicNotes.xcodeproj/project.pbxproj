@@ -7,17 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D67808515BCECDEEAF2EA49 /* Pods_PicNotes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAB2AB72D6DB625C6FF932DE /* Pods_PicNotes.framework */; };
+		D436AFD320FD412B0034DA67 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436AFD220FD412B0034DA67 /* Extensions.swift */; };
+		D436AFD520FD419B0034DA67 /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436AFD420FD419B0034DA67 /* PreviewController.swift */; };
 		D466C96820FD3AB200068197 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D466C96720FD3AB200068197 /* AppDelegate.swift */; };
-		D466C96A20FD3AB200068197 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D466C96920FD3AB200068197 /* ViewController.swift */; };
+		D466C96A20FD3AB200068197 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D466C96920FD3AB200068197 /* CameraViewController.swift */; };
 		D466C96D20FD3AB200068197 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D466C96B20FD3AB200068197 /* Main.storyboard */; };
 		D466C96F20FD3AB200068197 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D466C96E20FD3AB200068197 /* Assets.xcassets */; };
 		D466C97220FD3AB200068197 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D466C97020FD3AB200068197 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		83E2646A35378D3A756535E1 /* Pods-PicNotes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicNotes.release.xcconfig"; path = "Pods/Target Support Files/Pods-PicNotes/Pods-PicNotes.release.xcconfig"; sourceTree = "<group>"; };
+		BAB2AB72D6DB625C6FF932DE /* Pods_PicNotes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PicNotes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C47302B9B3E5EAD9FBEEA74A /* Pods-PicNotes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicNotes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PicNotes/Pods-PicNotes.debug.xcconfig"; sourceTree = "<group>"; };
+		D436AFD220FD412B0034DA67 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D436AFD420FD419B0034DA67 /* PreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
 		D466C96420FD3AB100068197 /* PicNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D466C96720FD3AB200068197 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D466C96920FD3AB200068197 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D466C96920FD3AB200068197 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		D466C96C20FD3AB200068197 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D466C96E20FD3AB200068197 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D466C97120FD3AB200068197 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -29,17 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D67808515BCECDEEAF2EA49 /* Pods_PicNotes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E00DBA4928E5E60700F3F1C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C47302B9B3E5EAD9FBEEA74A /* Pods-PicNotes.debug.xcconfig */,
+				83E2646A35378D3A756535E1 /* Pods-PicNotes.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D466C95B20FD3AB100068197 = {
 			isa = PBXGroup;
 			children = (
 				D466C96620FD3AB100068197 /* PicNotes */,
 				D466C96520FD3AB100068197 /* Products */,
+				8E00DBA4928E5E60700F3F1C /* Pods */,
+				DC7E6ADEDC6B712467202291 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +75,23 @@
 			isa = PBXGroup;
 			children = (
 				D466C96720FD3AB200068197 /* AppDelegate.swift */,
-				D466C96920FD3AB200068197 /* ViewController.swift */,
+				D466C96920FD3AB200068197 /* CameraViewController.swift */,
 				D466C96B20FD3AB200068197 /* Main.storyboard */,
 				D466C96E20FD3AB200068197 /* Assets.xcassets */,
 				D466C97020FD3AB200068197 /* LaunchScreen.storyboard */,
 				D466C97320FD3AB200068197 /* Info.plist */,
+				D436AFD220FD412B0034DA67 /* Extensions.swift */,
+				D436AFD420FD419B0034DA67 /* PreviewController.swift */,
 			);
 			path = PicNotes;
+			sourceTree = "<group>";
+		};
+		DC7E6ADEDC6B712467202291 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BAB2AB72D6DB625C6FF932DE /* Pods_PicNotes.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +101,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D466C97620FD3AB200068197 /* Build configuration list for PBXNativeTarget "PicNotes" */;
 			buildPhases = (
+				6B71631B3BDFC88E01E8A285 /* [CP] Check Pods Manifest.lock */,
 				D466C96020FD3AB100068197 /* Sources */,
 				D466C96120FD3AB100068197 /* Frameworks */,
 				D466C96220FD3AB100068197 /* Resources */,
+				51BC49FA481C50E2323AF07D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,12 +162,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		51BC49FA481C50E2323AF07D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PicNotes/Pods-PicNotes-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PicNotes/Pods-PicNotes-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B71631B3BDFC88E01E8A285 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PicNotes-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D466C96020FD3AB100068197 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D466C96A20FD3AB200068197 /* ViewController.swift in Sources */,
+				D436AFD520FD419B0034DA67 /* PreviewController.swift in Sources */,
+				D466C96A20FD3AB200068197 /* CameraViewController.swift in Sources */,
+				D436AFD320FD412B0034DA67 /* Extensions.swift in Sources */,
 				D466C96820FD3AB200068197 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,6 +355,7 @@
 		};
 		D466C97720FD3AB200068197 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C47302B9B3E5EAD9FBEEA74A /* Pods-PicNotes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -296,6 +374,7 @@
 		};
 		D466C97820FD3AB200068197 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83E2646A35378D3A756535E1 /* Pods-PicNotes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
