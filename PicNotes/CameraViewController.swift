@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Hero
 
 class CameraViewController : UIViewController, AVCapturePhotoCaptureDelegate {
     
@@ -44,6 +45,8 @@ class CameraViewController : UIViewController, AVCapturePhotoCaptureDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
+        
+        self.hero.isEnabled = true
         
         //Handle camera setup in this order.
         setupCaptureSession()
@@ -155,8 +158,12 @@ class CameraViewController : UIViewController, AVCapturePhotoCaptureDelegate {
         
         let previewVC = PreviewController()
         previewVC.previewImageView.image = previewImage
+        
         let navController = UINavigationController(rootViewController: previewVC)
-        self.present(navController, animated: true, completion: nil)
+        navController.hero.isEnabled = true
+        navController.hero.modalAnimationType = .selectBy(presenting: .pageIn(direction: .left), dismissing: .pageOut(direction: .right))
+        
+        present(navController, animated: true, completion: nil)
         
         print("Finishing processing photo sample buffer...")
     }
