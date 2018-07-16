@@ -25,8 +25,6 @@ class PreviewController: UIViewController{
         return button
     }()
     
-    var picker = UIPickerView()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +34,13 @@ class PreviewController: UIViewController{
         view.addSubview(cancelButton)
         cancelButton.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 24, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        view.addGestureRecognizer(tap)
+        
+        let press = UILongPressGestureRecognizer(target: self, action: #selector(self.handlePress(_:)))
+        view.addGestureRecognizer(press)
+        
+        view.isUserInteractionEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +50,14 @@ class PreviewController: UIViewController{
     @objc func handleCancel() {
         print("Cancel button pressed")
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        print("tapped")
+    }
+    
+    @objc func handlePress(_ sender: UITapGestureRecognizer) {
+        print("pressed")
     }
     
     
