@@ -13,6 +13,7 @@ class PreviewNotesController: PreviewControllerBase {
     
     let contentView = UIView()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

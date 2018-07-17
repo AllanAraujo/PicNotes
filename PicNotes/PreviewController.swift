@@ -29,11 +29,15 @@ class PreviewController: PreviewControllerBase {
     
     @objc func handleOpenNotes(){
         let pnc = PreviewNotesController()
-        pnc.previewImageView = self.previewImageView
+        pnc.previewImageView.image = self.previewImageView.image
+
         pnc.hero.isEnabled = true
         pnc.contentView.hero.id = "heroId"
+        
         pnc.contentView.hero.modifiers = [.scale()]
         pnc.contentView.backgroundColor = .white
+        
+        pnc.hero.modalAnimationType = .auto
         present(pnc, animated: true, completion: nil)
     }
 }
