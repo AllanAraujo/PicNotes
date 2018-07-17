@@ -57,14 +57,12 @@ class CameraViewController : UIViewController, AVCapturePhotoCaptureDelegate {
         
         //Now handle view setup
         setupView()
-        
-        
     }
     
     // MARK: Setting up view/buttons on screen
     fileprivate func setupView() {
         view.addSubview(captureButton)
-        captureButton.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 75, paddingRight: 0, width:100, height: 100)
+        captureButton.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 24, paddingRight: 0, width: 80, height: 80)
         captureButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         view.addSubview(flipCameraButton)
@@ -153,11 +151,9 @@ class CameraViewController : UIViewController, AVCapturePhotoCaptureDelegate {
         }
         let previewImage = UIImage(data: imageData)
         
-        let containerView = PreviewController()
-        containerView.previewImageView.image = previewImage
-        
         let previewVC = PreviewController()
         previewVC.previewImageView.image = previewImage
+        
         
         let navController = UINavigationController(rootViewController: previewVC)
         navController.hero.isEnabled = true

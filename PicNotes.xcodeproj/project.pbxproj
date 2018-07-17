@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9D67808515BCECDEEAF2EA49 /* Pods_PicNotes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAB2AB72D6DB625C6FF932DE /* Pods_PicNotes.framework */; };
+		D40EC48F20FE03EA00572C67 /* PreviewNotesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40EC48E20FE03EA00572C67 /* PreviewNotesController.swift */; };
+		D40EC49120FE187100572C67 /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40EC49020FE187100572C67 /* PreviewController.swift */; };
 		D436AFD320FD412B0034DA67 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436AFD220FD412B0034DA67 /* Extensions.swift */; };
-		D436AFD520FD419B0034DA67 /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436AFD420FD419B0034DA67 /* PreviewController.swift */; };
+		D436AFD520FD419B0034DA67 /* PreviewControllerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436AFD420FD419B0034DA67 /* PreviewControllerBase.swift */; };
 		D466C96820FD3AB200068197 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D466C96720FD3AB200068197 /* AppDelegate.swift */; };
 		D466C96A20FD3AB200068197 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D466C96920FD3AB200068197 /* CameraViewController.swift */; };
 		D466C96D20FD3AB200068197 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D466C96B20FD3AB200068197 /* Main.storyboard */; };
@@ -21,8 +23,10 @@
 		83E2646A35378D3A756535E1 /* Pods-PicNotes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicNotes.release.xcconfig"; path = "Pods/Target Support Files/Pods-PicNotes/Pods-PicNotes.release.xcconfig"; sourceTree = "<group>"; };
 		BAB2AB72D6DB625C6FF932DE /* Pods_PicNotes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PicNotes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C47302B9B3E5EAD9FBEEA74A /* Pods-PicNotes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicNotes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PicNotes/Pods-PicNotes.debug.xcconfig"; sourceTree = "<group>"; };
+		D40EC48E20FE03EA00572C67 /* PreviewNotesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewNotesController.swift; sourceTree = "<group>"; };
+		D40EC49020FE187100572C67 /* PreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
 		D436AFD220FD412B0034DA67 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		D436AFD420FD419B0034DA67 /* PreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
+		D436AFD420FD419B0034DA67 /* PreviewControllerBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewControllerBase.swift; sourceTree = "<group>"; };
 		D466C96420FD3AB100068197 /* PicNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D466C96720FD3AB200068197 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D466C96920FD3AB200068197 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -82,14 +86,16 @@
 		D466C96620FD3AB100068197 /* PicNotes */ = {
 			isa = PBXGroup;
 			children = (
-				D466C97320FD3AB200068197 /* Info.plist */,
 				D466C96720FD3AB200068197 /* AppDelegate.swift */,
 				D466C96920FD3AB200068197 /* CameraViewController.swift */,
-				D436AFD420FD419B0034DA67 /* PreviewController.swift */,
+				D436AFD420FD419B0034DA67 /* PreviewControllerBase.swift */,
+				D40EC49020FE187100572C67 /* PreviewController.swift */,
+				D40EC48E20FE03EA00572C67 /* PreviewNotesController.swift */,
 				D436AFD620FD491B0034DA67 /* Utils */,
 				D466C96E20FD3AB200068197 /* Assets.xcassets */,
 				D466C97020FD3AB200068197 /* LaunchScreen.storyboard */,
 				D466C96B20FD3AB200068197 /* Main.storyboard */,
+				D466C97320FD3AB200068197 /* Info.plist */,
 			);
 			path = PicNotes;
 			sourceTree = "<group>";
@@ -218,7 +224,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D436AFD520FD419B0034DA67 /* PreviewController.swift in Sources */,
+				D40EC49120FE187100572C67 /* PreviewController.swift in Sources */,
+				D436AFD520FD419B0034DA67 /* PreviewControllerBase.swift in Sources */,
+				D40EC48F20FE03EA00572C67 /* PreviewNotesController.swift in Sources */,
 				D466C96A20FD3AB200068197 /* CameraViewController.swift in Sources */,
 				D436AFD320FD412B0034DA67 /* Extensions.swift in Sources */,
 				D466C96820FD3AB200068197 /* AppDelegate.swift in Sources */,
