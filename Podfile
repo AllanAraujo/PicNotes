@@ -8,5 +8,7 @@ target 'PicNotes' do
   # Pods for PicNotes
    pod 'RealmSwift' 
    pod 'Hero'
+   pod 'Motion', '~> 1.0'
+   pod 'IQKeyboardManagerSwift'
 
 end

@@ -8,13 +8,13 @@
 
 import UIKit
 import Speech
-import Hero
+import Motion
 
 class PreviewController: UIViewController {
     
     let audioCaptureService = AudioCaptureService()
-    let notesId = "notedId"
-    var notes = ""
+    
+    var notesOpen = false
     
     var previewImageView: UIImageView = {
         let iv = UIImageView()
@@ -38,12 +38,14 @@ class PreviewController: UIViewController {
         return button
     }()
     
-    private let notesButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.layer.cornerRadius = 8
-        button.backgroundColor = .white
-        button.addTarget(self, action: #selector(handleOpenNotes), for: .touchUpInside)
-        return button
+    lazy var textView: UITextView = {
+        let frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        let tv = UITextView()
+        tv.layer.cornerRadius = 8
+        tv.font = UIFont.boldSystemFont(ofSize: 12)
+        tv.backgroundColor = .white
+        tv.keyboardDismissMode = .onDrag
+        return tv
     }()
         
     override func viewDidLoad() {
@@ -58,20 +60,20 @@ class PreviewController: UIViewController {
     }
     
     fileprivate func setupLayout() {
+        
         view.addSubview(previewImageView)
         previewImageView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         view.addSubview(microphoneButton)
         microphoneButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 24, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 32, height: 32)
         
-    
         view.addSubview(cancelButton)
         cancelButton.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 24, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
         
-        view.addSubview(notesButton)
-        notesButton.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 50, paddingRight: 12, width: 50, height: 50)
-        
-        microphoneButton.addTarget(self, action: #selector(handleRecord), for: .touchUpInside)
+        view.addSubview(textView)
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        textView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -83,10 +85,16 @@ class PreviewController: UIViewController {
     }
     
     
-    @objc func handleOpenNotes(){
-        if audioCaptureService.recordingEnabled() {
-            //Open notes view and start recording
+    fileprivate func openNotes(){
+        if !notesOpen {
+            let size = CGSize(width: 300, height: 450)
+            textView.animate(.size(size))
+        } else if notesOpen {
+            textView.resignFirstResponder()
+            let size = CGSize(width: 0, height: 0)
+            textView.animate(.size(size))
         }
+        notesOpen = !notesOpen
     }
     
     @objc func handleRecord() {
@@ -101,7 +109,7 @@ class PreviewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //textView.resignFirstResponder()
+        openNotes()
     }
     
 }

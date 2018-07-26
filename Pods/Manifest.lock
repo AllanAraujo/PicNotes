@@ -1,5 +1,9 @@
 PODS:
   - Hero (1.2.0)
+  - IQKeyboardManagerSwift (6.1.1)
+  - Motion (1.4.2):
+    - Motion/Core (= 1.4.2)
+  - Motion/Core (1.4.2)
   - Realm (3.7.4):
     - Realm/Headers (= 3.7.4)
   - Realm/Headers (3.7.4)
@@ -8,19 +12,25 @@ PODS:
 
 DEPENDENCIES:
   - Hero
+  - IQKeyboardManagerSwift
+  - Motion (~> 1.0)
   - RealmSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Hero
+    - IQKeyboardManagerSwift
+    - Motion
     - Realm
     - RealmSwift
 
 SPEC CHECKSUMS:
   Hero: 33dadf2cd1c98af71e213dcbc2902e6e03622a4e
+  IQKeyboardManagerSwift: 977affaeb4d6e971975c7790a6850f31d38f1207
+  Motion: 93605fd4dffe44203b56949eb0bc73a9521af7b6
   Realm: a469bb59e33f9926102ccaea4349822c53b9117e
   RealmSwift: a45861b21c180f5cf0f122144b9759fa8dde3e9e
 
-PODFILE CHECKSUM: 447d477c87f634436e958d0b76f17561bd78d3fa
+PODFILE CHECKSUM: af827d187042b630bdbc910a39e4ec436903adc8
 
 COCOAPODS: 1.5.3
