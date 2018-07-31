@@ -16,6 +16,11 @@
 		D466C96D20FD3AB200068197 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D466C96B20FD3AB200068197 /* Main.storyboard */; };
 		D466C96F20FD3AB200068197 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D466C96E20FD3AB200068197 /* Assets.xcassets */; };
 		D466C97220FD3AB200068197 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D466C97020FD3AB200068197 /* LaunchScreen.storyboard */; };
+		D47F9D08211082A000667570 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D47F9D07211082A000667570 /* GoogleService-Info.plist */; };
+		D47F9D0A2111130300667570 /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F9D092111130300667570 /* GridViewController.swift */; };
+		D47F9D0C21111BC200667570 /* DetailedNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F9D0B21111BC200667570 /* DetailedNotesViewController.swift */; };
+		D47F9D1121111C5700667570 /* GridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F9D1021111C5700667570 /* GridViewCell.swift */; };
+		D49F6BA6210A946700359C15 /* PicNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49F6BA5210A946700359C15 /* PicNote.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +37,11 @@
 		D466C96E20FD3AB200068197 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D466C97120FD3AB200068197 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D466C97320FD3AB200068197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D47F9D07211082A000667570 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D47F9D092111130300667570 /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
+		D47F9D0B21111BC200667570 /* DetailedNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNotesViewController.swift; sourceTree = "<group>"; };
+		D47F9D1021111C5700667570 /* GridViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewCell.swift; sourceTree = "<group>"; };
+		D49F6BA5210A946700359C15 /* PicNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicNote.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,17 +94,54 @@
 		D466C96620FD3AB100068197 /* PicNotes */ = {
 			isa = PBXGroup;
 			children = (
+				D47F9D0F21111C4700667570 /* Views */,
+				D47F9D0E21111C2300667570 /* Services */,
+				D47F9D0D21111C0700667570 /* Controllers */,
+				D49F6BA4210A945100359C15 /* Model */,
 				D466C96720FD3AB200068197 /* AppDelegate.swift */,
-				D41BDB4D2105E4BB00EB9FC1 /* AudioCaptureService.swift */,
-				D466C96920FD3AB200068197 /* CameraViewController.swift */,
-				D40EC49020FE187100572C67 /* PreviewController.swift */,
 				D436AFD620FD491B0034DA67 /* Utils */,
 				D466C96E20FD3AB200068197 /* Assets.xcassets */,
 				D466C97020FD3AB200068197 /* LaunchScreen.storyboard */,
 				D466C96B20FD3AB200068197 /* Main.storyboard */,
 				D466C97320FD3AB200068197 /* Info.plist */,
+				D47F9D07211082A000667570 /* GoogleService-Info.plist */,
 			);
 			path = PicNotes;
+			sourceTree = "<group>";
+		};
+		D47F9D0D21111C0700667570 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D466C96920FD3AB200068197 /* CameraViewController.swift */,
+				D40EC49020FE187100572C67 /* PreviewController.swift */,
+				D47F9D092111130300667570 /* GridViewController.swift */,
+				D47F9D0B21111BC200667570 /* DetailedNotesViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D47F9D0E21111C2300667570 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D41BDB4D2105E4BB00EB9FC1 /* AudioCaptureService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D47F9D0F21111C4700667570 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D47F9D1021111C5700667570 /* GridViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D49F6BA4210A945100359C15 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D49F6BA5210A946700359C15 /* PicNote.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		DC7E6ADEDC6B712467202291 /* Frameworks */ = {
@@ -166,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D466C97220FD3AB200068197 /* LaunchScreen.storyboard in Resources */,
+				D47F9D08211082A000667570 /* GoogleService-Info.plist in Resources */,
 				D466C96F20FD3AB200068197 /* Assets.xcassets in Resources */,
 				D466C96D20FD3AB200068197 /* Main.storyboard in Resources */,
 			);
@@ -181,19 +229,25 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-PicNotes/Pods-PicNotes-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Motion/Motion.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motion.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -225,11 +279,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D47F9D0C21111BC200667570 /* DetailedNotesViewController.swift in Sources */,
 				D40EC49120FE187100572C67 /* PreviewController.swift in Sources */,
 				D466C96A20FD3AB200068197 /* CameraViewController.swift in Sources */,
 				D436AFD320FD412B0034DA67 /* Extensions.swift in Sources */,
+				D47F9D0A2111130300667570 /* GridViewController.swift in Sources */,
+				D49F6BA6210A946700359C15 /* PicNote.swift in Sources */,
 				D41BDB4E2105E4BB00EB9FC1 /* AudioCaptureService.swift in Sources */,
 				D466C96820FD3AB200068197 /* AppDelegate.swift in Sources */,
+				D47F9D1121111C5700667570 /* GridViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

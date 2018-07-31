@@ -10,5 +10,7 @@ target 'PicNotes' do
    pod 'Hero'
    pod 'Motion', '~> 1.0'
    pod 'IQKeyboardManagerSwift'
+   pod 'Firebase/Core'
+   pod 'Firebase/Storage'
 
 end

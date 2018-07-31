@@ -86,3 +86,9 @@ extension Date {
         
     }
 }
+
+extension UITextView: AudioCaptureServicsOutputDelegate {
+    func audioCaptureServicsOutputDelegate(outputChanged: String) {
+        self.text = outputChanged
+    }
+}
