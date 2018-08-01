@@ -64,6 +64,7 @@ class CameraViewController : UIViewController, AVCapturePhotoCaptureDelegate {
         
         //Now handle view setup
         setupView()
+        
     }
     
     // MARK: Setting up view/buttons on screen

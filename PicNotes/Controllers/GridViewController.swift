@@ -9,17 +9,27 @@
 import UIKit
 import Firebase
 import Hero
+import RealmSwift
 
 class GridViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
+    var picNotes = [PicNote]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         collectionView?.backgroundColor = .white
         let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(handleBack))
         self.navigationItem.leftBarButtonItems = [backButton]
         
         collectionView?.register(GridViewCell.self, forCellWithReuseIdentifier: cellId)
+        
+        fetchPicNotes()
+    }
+    
+    fileprivate func fetchPicNotes(){
+        let realm = try! Realm()
+        picNotes = Array(realm.objects(PicNote.self))
     }
     
     @objc func handleBack() {
@@ -36,6 +46,9 @@ class GridViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! GridViewCell
+        
+        cell.picNote = picNotes[indexPath.item]
+        
         return cell
     }
     
@@ -54,7 +67,7 @@ class GridViewController: UICollectionViewController, UICollectionViewDelegateFl
 //    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return picNotes.count
     }
     
 }

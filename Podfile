@@ -12,5 +12,6 @@ target 'PicNotes' do
    pod 'IQKeyboardManagerSwift'
    pod 'Firebase/Core'
    pod 'Firebase/Storage'
+   pod 'SDWebImage', '~> 4.0'
 
 end

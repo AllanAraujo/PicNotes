@@ -152,6 +152,7 @@ class PreviewController: UIViewController {
                 }
                 
                 let picNote = PicNote()
+                picNote.filename = filename
                 picNote.pictureFilePath = imageURL
                 picNote.text = self.notesField.text
                 picNote.date = Date(timeIntervalSince1970: 1)

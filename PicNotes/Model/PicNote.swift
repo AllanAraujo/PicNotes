@@ -10,7 +10,12 @@ import Foundation
 import RealmSwift
 
 class PicNote: Object {
+    @objc dynamic var filename = ""
     @objc dynamic var text =  ""
     @objc dynamic var pictureFilePath = ""
     @objc dynamic var date = Date()
+    
+    override static func primaryKey() -> String? {
+        return "filename"
+    }
 }
