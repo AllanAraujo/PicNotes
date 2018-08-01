@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import Hero
 
 
 class GridViewCell: UICollectionViewCell {
@@ -19,10 +20,11 @@ class GridViewCell: UICollectionViewCell {
                 return
             }
             imageView.sd_setImage(with: URL(string: filepath), placeholderImage: UIImage(named: "placeholder.png"))
+            imageView.hero.id = picNote?.filename
         }
     }
     
-    fileprivate var imageView: UIImageView = {
+    var imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         return iv
@@ -36,6 +38,8 @@ class GridViewCell: UICollectionViewCell {
         
         addSubview(imageView)
         imageView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -15,8 +15,11 @@ class GridViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     let cellId = "cellId"
     var picNotes = [PicNote]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.hero.isEnabled = true
         
         collectionView?.backgroundColor = .white
         let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(handleBack))
@@ -52,22 +55,28 @@ class GridViewController: UICollectionViewController, UICollectionViewDelegateFl
         return cell
     }
     
-    
-    //setup line spacing between each view to be 1. Effects being able to divide views equally
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
-//
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top:1, left: 10, bottom: 10, right:10)
-//    }
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return picNotes.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! GridViewCell
+        
+        let detailedNotesVC = DetailedNotesViewController()
+        detailedNotesVC.image = cell.imageView.image
+        
+        guard let picNote = cell.picNote else {return}
+        detailedNotesVC.picNote = picNote
+        
+        present(detailedNotesVC, animated: true, completion: nil)
     }
     
 }
