@@ -50,7 +50,7 @@ class GridViewController: UICollectionViewController, UICollectionViewDelegateFl
     //setup actual square size for each view in collection.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let width = (view.frame.width - 2) / 3
+        let width = (view.frame.width - 48) / 3
         return CGSize(width: width, height: width)
 
     }
@@ -64,11 +64,11 @@ class GridViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 10
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 10
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -87,4 +87,8 @@ class GridViewController: UICollectionViewController, UICollectionViewDelegateFl
         present(detailedNotesVC, animated: true, completion: nil)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+    }
+
 }
