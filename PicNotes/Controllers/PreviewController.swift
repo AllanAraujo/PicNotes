@@ -44,7 +44,7 @@ class PreviewController: UIViewController {
         let frame = CGRect(x: 0, y: 0, width: 0, height: 0)
         let tv = UITextView()
         tv.layer.cornerRadius = 8
-        tv.font = UIFont.boldSystemFont(ofSize: 12)
+        tv.font = UIFont.boldSystemFont(ofSize: 14)
         tv.backgroundColor = .white
         tv.keyboardDismissMode = .onDrag
         return tv
@@ -124,9 +124,24 @@ class PreviewController: UIViewController {
     }
     
     @objc func handleCancel() {
-        //self.dismiss(animated: true, completion: nil
-//        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
-        dismiss(animated: true, completion: nil)
+        
+        //If user has notes, prompt to go back.
+        if notesField.text.count > 0 {
+            let alertController = UIAlertController(title: "Are you sure?", message: "You will delete all of your notes for this picture if you say yes.", preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (_) in
+                print("perform cancel")
+            }))
+            
+            alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (_) in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            
+            
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc func handleSave() {

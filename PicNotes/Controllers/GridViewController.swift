@@ -25,6 +25,7 @@ class GridViewController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView?.backgroundColor = .white
         let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(handleBack))
         self.navigationItem.leftBarButtonItems = [backButton]
+        self.navigationItem.title = "PicNotes"
         
         collectionView?.register(GridViewCell.self, forCellWithReuseIdentifier: cellId)
         

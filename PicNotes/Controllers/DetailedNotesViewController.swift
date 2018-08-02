@@ -118,6 +118,10 @@ class DetailedNotesViewController: UIViewController {
         //Prompt if user is sure?
         let alertController = UIAlertController(title: "Are you sure?", message: "You want to delete this PicNote?", preferredStyle: .alert)
         
+        alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (_) in
+            print("perform cancel")
+        }))
+        
         alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (_) in
             let realm = try! Realm()
             
@@ -125,14 +129,8 @@ class DetailedNotesViewController: UIViewController {
                 realm.delete(self.picNote!)
             }
             self.dismiss(animated: true, completion: nil)
-
+            
         }))
-        
-        alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (_) in
-            print("perform cancel")
-        }))
-        
-
         self.present(alertController, animated: true, completion: nil)
         
     }
