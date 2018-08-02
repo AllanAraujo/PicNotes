@@ -14,7 +14,8 @@ import RealmSwift
 class GridViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
-    var picNotes = [PicNote]()
+    var unorderedPicNotes = [PicNote]()
+    var orderedPicNotes = [PicNote]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +31,15 @@ class GridViewController: UICollectionViewController, UICollectionViewDelegateFl
         fetchPicNotes()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        fetchPicNotes()
+        collectionView?.reloadData()
+    }
+    
     fileprivate func fetchPicNotes(){
         let realm = try! Realm()
-        picNotes = Array(realm.objects(PicNote.self))
+        unorderedPicNotes = Array(realm.objects(PicNote.self))
+        orderedPicNotes = unorderedPicNotes.reversed()
     }
     
     @objc func handleBack() {
@@ -50,7 +57,7 @@ class GridViewController: UICollectionViewController, UICollectionViewDelegateFl
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! GridViewCell
         
-        cell.picNote = picNotes[indexPath.item]
+        cell.picNote = orderedPicNotes[indexPath.item]
         
         return cell
     }
@@ -64,7 +71,7 @@ class GridViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return picNotes.count
+        return unorderedPicNotes.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

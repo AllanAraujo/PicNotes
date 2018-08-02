@@ -54,7 +54,6 @@ class PreviewController: UIViewController {
         let button = UIButton(type: .system)
         button.addTarget(self, action: #selector(handleType), for: .touchUpInside)
         button.setImage(#imageLiteral(resourceName: "write").withRenderingMode(.alwaysOriginal), for: .normal)
-        button.isEnabled = false
         return button
     }()
     
@@ -132,6 +131,7 @@ class PreviewController: UIViewController {
     
     @objc func handleSave() {
         //1. Store image
+        saveButton.isEnabled = false
         guard let image = previewImageView.image else {return}
         guard let uploadData = UIImageJPEGRepresentation(image, 0.5) else {return}
         
@@ -167,7 +167,8 @@ class PreviewController: UIViewController {
                 try! realm.write {
                     realm.add(picNote)
                 }
-                self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+                self.saveButton.isEnabled = true
+                self.dismiss(animated: true, completion: nil)
             })
         }
     }

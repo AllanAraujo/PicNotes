@@ -20,12 +20,6 @@ class DetailedNotesViewController: UIViewController {
             self.imageView.image = image
         }
     }
-
-    var imageView: UIImageView = {
-        let iv = UIImageView()
-        iv.contentMode = .scaleAspectFill
-        return iv
-    }()
     
     var picNote: PicNote? {
         didSet {
@@ -33,6 +27,12 @@ class DetailedNotesViewController: UIViewController {
             notesField.text = picNote?.text
         }
     }
+
+    var imageView: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
     
     lazy var notesField: UITextView = {
         let frame = CGRect(x: 0, y: 0, width: 0, height: 0)
@@ -40,7 +40,25 @@ class DetailedNotesViewController: UIViewController {
         tv.layer.cornerRadius = 8
         tv.font = UIFont.boldSystemFont(ofSize: 12)
         tv.backgroundColor = .white
+        tv.keyboardDismissMode = .onDrag
         return tv
+    }()
+    
+
+    let deleteButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.addTarget(self, action: #selector(handleDelete), for: .touchUpInside)
+        button.setImage(#imageLiteral(resourceName: "trashcan").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.isEnabled = true
+        return button
+    }()
+    
+    let typeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.addTarget(self, action: #selector(handleType), for: .touchUpInside)
+        button.setImage(#imageLiteral(resourceName: "write").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.isEnabled = true
+        return button
     }()
     
     override func viewDidLoad() {
@@ -59,6 +77,12 @@ class DetailedNotesViewController: UIViewController {
         
         view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan(gr:))))
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(gr:))))
+        
+        view.addSubview(typeButton)
+        typeButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 45, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 30, height: 30)
+        
+        view.addSubview(deleteButton)
+        deleteButton.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 22, paddingRight: 12, width: 30, height: 30)
     }
     
     @objc func handlePan(gr: UIPanGestureRecognizer) {
@@ -84,6 +108,33 @@ class DetailedNotesViewController: UIViewController {
     
     @objc func handleTap(gr: UITapGestureRecognizer) {
         toggleNotesView()
+    }
+    
+    @objc func handleType(){
+        toggleNotesView()
+    }
+    
+    @objc func handleDelete() {
+        //Prompt if user is sure?
+        let alertController = UIAlertController(title: "Are you sure?", message: "You want to delete this PicNote?", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (_) in
+            let realm = try! Realm()
+            
+            try! realm.write {
+                realm.delete(self.picNote!)
+            }
+            self.dismiss(animated: true, completion: nil)
+
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (_) in
+            print("perform cancel")
+        }))
+        
+
+        self.present(alertController, animated: true, completion: nil)
+        
     }
     
     //MARK: Handlers
