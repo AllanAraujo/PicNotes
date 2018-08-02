@@ -27,7 +27,7 @@ class PreviewController: UIViewController {
     
     let cancelButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "cancel").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "back-icon").withRenderingMode(.alwaysOriginal), for: .normal)
         button.addTarget(self, action: #selector(handleCancel), for: .touchUpInside)
         return button
     }()
@@ -35,7 +35,7 @@ class PreviewController: UIViewController {
     let saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.addTarget(self, action: #selector(handleSave), for: .touchUpInside)
-        button.setImage(#imageLiteral(resourceName: "save-picnote").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "save-icon").withRenderingMode(.alwaysOriginal), for: .normal)
         button.isEnabled = true
         return button
     }()
@@ -53,7 +53,7 @@ class PreviewController: UIViewController {
     let typeButton: UIButton = {
         let button = UIButton(type: .system)
         button.addTarget(self, action: #selector(handleType), for: .touchUpInside)
-        button.setImage(#imageLiteral(resourceName: "text").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "write").withRenderingMode(.alwaysOriginal), for: .normal)
         button.isEnabled = false
         return button
     }()
@@ -62,6 +62,8 @@ class PreviewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.hero.isEnabled = true
+        
         navigationController?.isNavigationBarHidden = true
         
         setupLayout()
@@ -74,13 +76,13 @@ class PreviewController: UIViewController {
         previewImageView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
 
         view.addSubview(saveButton)
-        saveButton.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 24, paddingRight: 24, width: 64, height: 64)
+        saveButton.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 24, paddingRight: 12, width: 30, height: 30)
         
         view.addSubview(typeButton)
-        typeButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 24, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 64, height: 64)
+        typeButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 45, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 30, height: 30)
         
         view.addSubview(cancelButton)
-        cancelButton.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 24, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 64, height: 64)
+        cancelButton.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 45, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
         
         view.addSubview(notesField)
         notesField.translatesAutoresizingMaskIntoConstraints = false
@@ -124,7 +126,8 @@ class PreviewController: UIViewController {
     
     @objc func handleCancel() {
         //self.dismiss(animated: true, completion: nil
-        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+//        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     @objc func handleSave() {
@@ -133,6 +136,8 @@ class PreviewController: UIViewController {
         guard let uploadData = UIImageJPEGRepresentation(image, 0.5) else {return}
         
         let filename = NSUUID().uuidString
+        
+        
         Storage.storage().reference().child("pictures").child(filename).putData(uploadData, metadata: nil) { (meta, err) in
             if let err = err {
                 print("Failed to upload post image: ", err)
@@ -156,10 +161,6 @@ class PreviewController: UIViewController {
                 picNote.pictureFilePath = imageURL
                 picNote.text = self.notesField.text
                 picNote.date = Date(timeIntervalSince1970: 1)
-                
-                print("imageURL: \(imageURL)")
-                print("text: \(self.notesField.text)")
-                print("imageURL: \(picNote.date)")
                 
                 let realm = try! Realm()
                 

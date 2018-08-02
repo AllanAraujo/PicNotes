@@ -37,14 +37,14 @@ class CameraViewController : UIViewController, AVCapturePhotoCaptureDelegate {
     
     let flipCameraButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "flip-camera").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "camera-flip").withRenderingMode(.alwaysOriginal), for: .normal)
         button.addTarget(self, action: #selector(handleFlipCamera), for: .touchUpInside)
         return button
     }()
     
     let notesCollection: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "grid").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "grid-view").withRenderingMode(.alwaysOriginal), for: .normal)
         button.addTarget(self, action: #selector(handlePresentGridView), for: .touchUpInside)
         return button
     }()
@@ -74,10 +74,10 @@ class CameraViewController : UIViewController, AVCapturePhotoCaptureDelegate {
         captureButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         view.addSubview(flipCameraButton)
-        flipCameraButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 45, paddingLeft: 0, paddingBottom: 0, paddingRight: 15, width: 64, height: 64)
+        flipCameraButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 45, paddingLeft: 0, paddingBottom: 0, paddingRight: 15, width: 30, height: 30)
         
         view.addSubview(notesCollection)
-        notesCollection.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 45, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 64, height: 64)
+        notesCollection.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 45, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
     
     }
     
@@ -144,6 +144,10 @@ class CameraViewController : UIViewController, AVCapturePhotoCaptureDelegate {
     @objc func handlePresentGridView() {
         let gridVC = GridViewController(collectionViewLayout: UICollectionViewFlowLayout())
         let navController = UINavigationController(rootViewController: gridVC)
+        navController.hero.isEnabled = true
+        
+        navController.hero.modalAnimationType = .selectBy(presenting: .cover(direction: .right), dismissing: .uncover(direction: .left))
+
         self.present(navController, animated: true, completion: nil)
     }
     
@@ -171,11 +175,9 @@ class CameraViewController : UIViewController, AVCapturePhotoCaptureDelegate {
         let previewVC = PreviewController()
         previewVC.previewImageView.image = previewImage
         
-        
         let navController = UINavigationController(rootViewController: previewVC)
         navController.hero.isEnabled = true
-        navController.hero.modalAnimationType = .selectBy(presenting: .pageIn(direction: .left), dismissing: .pageOut(direction: .right))
-        
+        navController.hero.modalAnimationType = .selectBy(presenting: .fade, dismissing: .fade)
         present(navController, animated: true, completion: nil)
         
         print("Finishing processing photo sample buffer...")

@@ -75,7 +75,7 @@ class GridViewController: UICollectionViewController, UICollectionViewDelegateFl
         
         guard let picNote = cell.picNote else {return}
         detailedNotesVC.picNote = picNote
-        
+        print(picNote.filename)
         present(detailedNotesVC, animated: true, completion: nil)
     }
     
