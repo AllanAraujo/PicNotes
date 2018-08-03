@@ -38,7 +38,7 @@ class DetailedNotesViewController: UIViewController {
         let frame = CGRect(x: 0, y: 0, width: 0, height: 0)
         let tv = UITextView()
         tv.layer.cornerRadius = 8
-        tv.font = UIFont.boldSystemFont(ofSize: 12)
+        tv.font = UIFont.boldSystemFont(ofSize: 18)
         tv.backgroundColor = .white
         tv.keyboardDismissMode = .onDrag
         return tv
