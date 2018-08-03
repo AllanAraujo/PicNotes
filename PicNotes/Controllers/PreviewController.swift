@@ -15,7 +15,7 @@ import RealmSwift
 
 class PreviewController: UIViewController {
     
-    
+    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
     var notesOpen = false
     let audioCaptureService = AudioCaptureService()
     
@@ -145,7 +145,9 @@ class PreviewController: UIViewController {
     }
     
     @objc func handleSave() {
-        //1. Store image
+        
+        startActivityIndicator()
+        
         saveButton.isEnabled = false
         guard let image = previewImageView.image else {return}
         guard let uploadData = UIImageJPEGRepresentation(image, 0.5) else {return}
@@ -183,34 +185,59 @@ class PreviewController: UIViewController {
                     realm.add(picNote)
                 }
                 
-                DispatchQueue.main.async {
-                    let savedLabel = UILabel()
-                    savedLabel.text = "Saved Successfully"
-                    savedLabel.textColor = .white
-                    savedLabel.font = UIFont.boldSystemFont(ofSize: 18)
-                    savedLabel.backgroundColor = UIColor(white: 0, alpha: 0.3)
-                    savedLabel.numberOfLines = 0
-                    savedLabel.textAlignment = .center
-                    savedLabel.frame = CGRect(x: 0, y: 0, width: 150, height: 80)
-                    savedLabel.center = self.view.center
-                    self.view.addSubview(savedLabel)
-                    
-                    savedLabel.layer.transform = CATransform3DMakeScale(0, 0, 0)
-                    
-                    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-                        savedLabel.layer.transform = CATransform3DMakeScale(1, 1, 1)
-                    }, completion: { (complated) in
-                        //Complated
-                        UIView.animate(withDuration: 0.5, delay: 0.75, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-                            savedLabel.layer.transform = CATransform3DMakeScale(0.1, 0.1, 0.1)
-                            savedLabel.alpha = 0
-                        }, completion: { (_) in
-                            savedLabel.removeFromSuperview()
-                            self.saveButton.isEnabled = true
-                            self.dismiss(animated: true, completion: nil)
-                        })
-                    })
-                }
+                self.stopActivityIndicator()
+                self.displaySaveComplatedLabel()
+
+            })
+        }
+    }
+    
+    fileprivate func startActivityIndicator(){
+        DispatchQueue.main.async {
+            // Add it to the view where you want it to appear
+            self.view.addSubview(self.activityIndicator)
+            
+            // Set up its size (the super view bounds usually)
+            self.activityIndicator.frame = self.view.bounds
+            // Start the loading animation
+            self.activityIndicator.startAnimating()
+        }
+    }
+    
+    fileprivate func stopActivityIndicator(){
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.removeFromSuperview()
+        }
+    }
+    
+    fileprivate func displaySaveComplatedLabel() {
+        DispatchQueue.main.async {
+            let savedLabel = UILabel()
+            savedLabel.text = "Saved Successfully"
+            savedLabel.textColor = .white
+            savedLabel.font = UIFont.boldSystemFont(ofSize: 18)
+            savedLabel.backgroundColor = UIColor(white: 0, alpha: 0.3)
+            savedLabel.numberOfLines = 0
+            savedLabel.textAlignment = .center
+            savedLabel.frame = CGRect(x: 0, y: 0, width: 150, height: 80)
+            savedLabel.center = self.view.center
+            self.view.addSubview(savedLabel)
+            
+            savedLabel.layer.transform = CATransform3DMakeScale(0, 0, 0)
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+                savedLabel.layer.transform = CATransform3DMakeScale(1, 1, 1)
+            }, completion: { (complated) in
+                //Complated
+                UIView.animate(withDuration: 0.5, delay: 0.75, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+                    savedLabel.layer.transform = CATransform3DMakeScale(0.1, 0.1, 0.1)
+                    savedLabel.alpha = 0
+                }, completion: { (_) in
+                    savedLabel.removeFromSuperview()
+                    self.saveButton.isEnabled = true
+                    self.dismiss(animated: true, completion: nil)
+                })
             })
         }
     }
